@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: eee;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 200px 100px 600px 100px;
+    row-gap: 50px;
+}
+#Top {
+    text-align: right;
+    background-color: skyblue;
+}
+#Profile {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+#Menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.selected {
+    background-color: lightgrey;
+}
+#Menu-stocks:hover, #Menu-stocks:active, #Menu-news:hover, #Menu-news:active {
+    background-color: lightgrey;
+}
+#Stocks, #News {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+}
+.th {
+    border-bottom: 2px solid blue;
+}
+h1, p {
+    text-align: center;
+}
+h1 {
+    font-size: 100px;
+}
+p, input, label, button {
+    font-size: 50px;
+}
+input {
+    width: 200px;
+}

@@ -12,8 +12,7 @@ window.onload = () => {
 
     // 변수 선언 ------------------------------------------------------------------------------------------------------------------
     const fluctuationRange = 0.5;
-    const submissionInterval = 300000; // 60000 이상 3600000 이하
-    let isSubmitterRunned = false;
+    const submissionInterval = 60000; // 60000 이상 3600000 이하
 
 
     // 함수들 ---------------------------------------------------------------------------------------------------------------------
@@ -271,7 +270,7 @@ window.onload = () => {
 
 
     // 댜충 setInterval 관련 ------------------------------------------------------------------------------------------------------
-    const setIntervalWhichWorksMultipleof5 = setInterval(function () {
+    const updateEverySecond = setInterval(function () {
         const now = new Date();
         if (isTheTime(submissionInterval, now)) {
             submit();
@@ -279,7 +278,7 @@ window.onload = () => {
 
         DOMsUpdates.whentoSubmit(now);
     }, 1000);
-    // @todo: 대충 몇 시 되면 setInterval 2개 전부 종료 때리고 when-to-submit에 게임 종료 비스무리한 거 출력하게 하기
+    // @todo: 대충 몇 시 되면 setInterval 종료 때리고 when-to-submit에 게임 종료 비스무리한 거 출력하게 하기
 
 
 

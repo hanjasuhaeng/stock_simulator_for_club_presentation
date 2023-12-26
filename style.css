@@ -10,7 +10,6 @@ body {
     row-gap: 50px;
 }
 #Top {
-    text-align: right;
     background-color: skyblue;
 }
 #Profile {
@@ -34,6 +33,9 @@ body {
 }
 .th {
     border-bottom: 2px solid blue;
+}
+#Bottom {
+    text-align: center;
 }
 h1, p {
     text-align: center;

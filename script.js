@@ -157,11 +157,10 @@ window.onload = () => {
             newRoundUpdateDOMs();
             LSNUpdate();
 
-            console.log("제출 성공", new Date);
+            alert("제출 성공", new Date);
         } else {
             alert("주식은 여윳돈으로 하셔야 됩니다.");
-
-            console.log("제출 실패", new Date);
+            alert("제출 실패", new Date);
         }
 
         // ranking[userName] = yourMoney;

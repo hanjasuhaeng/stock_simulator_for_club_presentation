@@ -5,10 +5,14 @@ let s;
 
 
 window.onload = () => {
+    // 디버깅용 (나중에 지워) ------------------------------------------------------------------------------------------------------
+    s = submit;
+
+
+
     // 변수 선언 ------------------------------------------------------------------------------------------------------------------
     const fluctuationRange = 0.5;
-    // @todo 밀리초로 바꾸기 <- 귀찮음 ㅅㄱ
-    const submissionInterval = 3e5;
+    const submissionInterval = 300000; // 60000 이상 3600000 이하
     let isSubmitterRunned = false;
 
 
@@ -136,7 +140,7 @@ window.onload = () => {
 
     function isTheTime(interval, date) {
         const min = interval / 60000;
-        return date.getMinutes() % min == 0
+        return date.getMinutes() % min == 0 && date.getSeconds() == 0;
     }
 
     function getRemainingTime(interval, date) {
@@ -180,11 +184,8 @@ window.onload = () => {
         [0.5, 0.5, 0.5, 0.5], // 실패 확률
         1, // 라운드 수
     ];
-    Object.freeze(defaultValues);
     const LSNValues= JSON.parse(window.localStorage.getItem('N'));
-    Object.freeze(LSNValues);
     const values = LSNValues || defaultValues;
-    Object.freeze(values);
     let yourMoney = values[0];
     let stockValues = values[1];
     let stockLens = values[2];
@@ -192,8 +193,8 @@ window.onload = () => {
     let stockFailProbabilities = values[4];
     let round = values[5];
     const defaultUserName = `유저${parseInt(Math.random() * 1000)}`;
-    const lsUserName= window.localStorage.getItem('userName');
-    const userName = lsUserName || defaultUserName;
+    const LSUserName= window.localStorage.getItem('userName');
+    const userName = LSUserName || defaultUserName;
     let stockSum = stockValues.reduce((acc, value, index) => acc + value * stockLens[index], 0);
 
 
@@ -272,24 +273,16 @@ window.onload = () => {
     // 댜충 setInterval 관련 ------------------------------------------------------------------------------------------------------
     const setIntervalWhichWorksMultipleof5 = setInterval(function () {
         const now = new Date();
-        if (isTheTime(submissionInterval, now) && !isSubmitterRunned) {
+        if (isTheTime(submissionInterval, now)) {
             submit();
-
-            isSubmitterRunned = true;
-            const submitter = setInterval(function () {
-                submit();
-            }, submissionInterval);
         }
 
         DOMsUpdates.whentoSubmit(now);
     }, 1000);
-
     // @todo: 대충 몇 시 되면 setInterval 2개 전부 종료 때리고 when-to-submit에 게임 종료 비스무리한 거 출력하게 하기
-    s = submit;
 
 
 
     // 랭킹 관련 ------------------------------------------------------------------------------------------------------------------
     // 사실 없음 ㅋ
-    // 미래의 나도 만들기를 거부함
 }

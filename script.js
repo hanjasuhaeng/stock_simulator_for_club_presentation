@@ -96,15 +96,16 @@ window.onload = () => {
             const stockSuccessProbability = stockSuccessProbabilities[i];
             const stockFailProbability = stockFailProbabilities[i];
             const stockValueFluctuation = Math.round(stockValue * fluctuationRange);
+            const stockSumFluctuation = Math.round(stockLen * fluctuationRange);
             const stockSum = stockValue * stockLen;
 
             // 주가, 소지금 변경
             if (Math.random() < stockSuccessProbability) {
                 stockValues[i] += stockValueFluctuation;
-                yourMoney += stockSum;
+                yourMoney += stockSumFluctuation;
             } else if (Math.random() < stockFailProbability) {
                 stockValues[i] -= stockValueFluctuation;
-                yourMoney -= stockSum;
+                yourMoney -= stockSumFluctuation;
             }
         },
         probabilities: function (i) {

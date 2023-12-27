@@ -96,8 +96,8 @@ window.onload = () => {
             const stockSuccessProbability = stockSuccessProbabilities[i];
             const stockFailProbability = stockFailProbabilities[i];
             const stockValueFluctuation = Math.round(stockValue * fluctuationRange);
-            const stockSumFluctuation = Math.round(stockSum * fluctuationRange);
             const stockSum = stockValue * stockLen;
+            const stockSumFluctuation = Math.round(stockSum * fluctuationRange);
 
             // 주가, 소지금 변경
             if (Math.random() < stockSuccessProbability) {
